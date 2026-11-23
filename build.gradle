@@ -1,0 +1,296 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.17'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.7"
+        classpath "org.ajoberstar:gradle-git:1.6.0"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'checkstyle'
+    id 'jacoco'
+    id "com.google.protobuf" version "0.8.17"
+    id 'nebula.ospackage' version '8.6.3'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'maven-publish'
+}
+
+configurations {
+    compile
+    testCompile
+    compileClasspath
+    runtimeClasspath
+}
+
+lombok {
+    version = '1.18.4'
+    sha256 = ""
+}
+
+group 'org.pranay'
+version '0.8.0'
+
+def projName = "aqueduct"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
+}
+
+private Properties loadEnv() {
+    Properties properties = new Properties()
+    properties.load(new FileInputStream(file("${projectDir}/env/local.properties")));
+    properties
+}
+
+def mainClassName = "org.pranay.aqueduct.launch.Main"
+
+dependencies {
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.1.0'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.1.0'
+    implementation group: 'com.datadoghq', name: 'java-dogstatsd-client', version: '2.13.0'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+    implementation group: 'org.aeonbits.owner', name: 'owner', version: '1.0.9'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.6.0'
+    implementation group: 'com.google.guava', name: 'guava', version: '23.5-jre'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+    implementation group: 'com.samskivert', name: 'jmustache', version: '1.13'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '9.4.1212'
+    implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '2.4.0'
+    implementation group: 'org.apache.commons', name: 'commons-jexl', version: '2.1'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    implementation group: 'org.pranay', name: 'stencil', version: '0.4.0' exclude group: 'org.slf4j'
+    implementation group: 'software.amazon.awssdk', name: 's3', version: '2.17.129'
+    implementation group: 'org.influxdb', name: 'influxdb-java', version: '2.5'
+    implementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
+    implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: '1.7.35'
+    implementation group: 'redis.clients', name: 'jedis', version: '3.0.1'
+    implementation group: 'io.opentracing', name: 'opentracing-api', version: '0.33.0'
+    implementation group: 'io.opentracing.contrib', name: 'opentracing-kafka-client', version: '0.1.4'
+    implementation group: 'io.jaegertracing', name: 'jaeger-client', version: '1.0.0'
+    implementation(group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '6.3.1') {
+        exclude group: "log4j", module: "log4j"
+    }
+    implementation 'io.confluent:monitoring-interceptors:3.0.0'
+    implementation 'io.grpc:grpc-all:1.53.0'
+    implementation group: 'org.jfrog.buildinfo', name: 'build-info-extractor', version: '2.6.3'
+    implementation group: 'com.google.gradle', name: 'osdetector-gradle-plugin', version: '1.2.1'
+    implementation group: 'org.apache.ivy', name: 'ivy', version: '2.2.0'
+    implementation group: 'org.mongodb', name: 'mongo-java-driver', version: '3.12.8'
+    implementation(group: 'org.apache.hadoop', name: 'hadoop-common', version: '3.1.0') {
+        exclude group: "log4j", module: "log4j"
+        exclude group: "org.slf4j", module: "slf4j-log4j12"
+    }
+    implementation group: 'com.gojek.parquet', name: 'parquet-protobuf', version: '1.11.9'
+    implementation 'com.gojek.parquet:parquet-hadoop:1.11.9'
+    implementation group: 'com.github.os72', name: 'protobuf-dynamic', version: '1.0.1'
+    implementation platform('com.google.cloud:libraries-bom:20.5.0')
+    implementation 'com.google.cloud:google-cloud-storage:2.20.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+    implementation group: 'org.pranay', name: 'depot', version: '0.4.0'
+    implementation group: 'com.networknt', name: 'json-schema-validator', version: '1.0.59' exclude group: 'org.slf4j'
+
+    testImplementation group: 'junit', name: 'junit', version: '4.11'
+    testImplementation 'org.hamcrest:hamcrest-all:1.3'
+    testImplementation 'org.mockito:mockito-core:4.5.1'
+    testImplementation "com.github.tomakehurst:wiremock:2.3.1"
+    testImplementation group: 'io.opentracing', name: 'opentracing-mock', version: '0.33.0'
+    testImplementation group: 'org.mock-server', name: 'mockserver-netty', version: '3.10.5'
+    testImplementation gradleTestKit()
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+}
+
+protobuf {
+    generatedFilesBaseDir = "$projectDir/src/generated"
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.1.0"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.0.3"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+        all().each { task ->
+            task.generateDescriptorSet = true
+            task.descriptorSetOptions.includeSourceInfo = false
+            task.descriptorSetOptions.includeImports = true
+            task.descriptorSetOptions.path = "$projectDir/src/test/resources/__files/descriptors.bin"
+        }
+    }
+}
+
+test {
+    beforeTest {
+        descriptor -> logger.lifecycle("Running test: " + descriptor)
+    }
+    testLogging {
+        exceptionFormat "full" // default is "short"
+        events "passed", "skipped", "failed"
+    }
+    useJUnit {
+        excludeCategories 'org.pranay.aqueduct.test.categories.IntegrationTest'
+    }
+    doLast {
+        delete "$projectDir/src/test/resources/__files"
+    }
+
+}
+clean {
+    delete "$projectDir/src/test/resources/__files"
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.pranay.aqueduct.launch.Main'
+        duplicatesStrategy = 'exclude'
+        zip64 = true
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude('META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA')
+}
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/pranay/aqueduct"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
+idea {
+    module {
+        testSourceDirs += file("$projectDir/src/generated/test/java")
+    }
+}
+
+task runConsumer(type: JavaExec) {
+    Properties properties = loadEnv()
+    def env = System.getenv()
+    env.each { k, v ->
+        properties.setProperty(k, v)
+    }
+    main = mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    environment properties
+}
+
+task dist(type: Deb, dependsOn: ['build']) {
+    packageName = 'aqueduct'
+    version = project.hasProperty('projVersion') ? project.projVersion : '0.1'
+
+    into '/opt/aqueduct/aqueduct/'
+
+    from("${buildDir}/libs") {
+        fileMode = 0755
+        into 'bin'
+    }
+}
+
+allprojects {
+
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    tasks.withType(JavaExec) {
+        if (System.getProperty('DEBUG', 'false') == 'true') {
+            jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009'
+        }
+    }
+
+}
+
+checkstyle {
+    toolVersion '7.6.1'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source = 'src/main/java'
+}
+checkstyleTest {
+    source = 'src/test/java'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled = true
+        html.destination file("${reportsDir}/jacoco/")
+    }
+    afterEvaluate {
+        getClassDirectories().setFrom(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: ['**/config/**',
+                              '**/factory/**',
+                              '**/exception/**',
+                              '**/serializer/**',
+                              '**/cortexpb/**',
+                              '**/Clock**',
+                              '**/GoGoProtos**',
+                    ])
+        })
+    }
+}
+tasks.withType(Test) {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestCoverageVerification {
+    afterEvaluate {
+        getClassDirectories().setFrom(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: ['**/config/**',
+                              '**/factory/**',
+                              '**/exception/**',
+                              '**/serializer/**',
+                              '**/cortexpb/**',
+                              '**/SinkFactory**',
+                              '**/Clock**',
+                              '**/KafkaUtils**',
+                              '**/ConsumerRebalancer**',
+                              '**/AqueductConsumerFactory**',
+                              '**/GoGoProtos**',])
+        })
+    }
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.80
+            }
+        }
+    }
+}
+check.dependsOn jacocoTestCoverageVerification
