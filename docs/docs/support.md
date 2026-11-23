@@ -5,7 +5,7 @@ Need a bit of help? We're here for you. Check out our current issues, GitHub dis
 ### Issues
 
 Have a general issue or bug that you've found? We'd love to hear about it in our GitHub issues. This can be feature requests too!
-[Go to issues](https://github.com/pranay/aqueduct/issues)
+[Go to issues](https://github.com/PRANAY8055/aqueduct/issues)
 
 ### Discussions
 

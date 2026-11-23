@@ -39,7 +39,7 @@ Aqueduct needs Java SE Development Kit 8 to be installed and configured in `JAVA
 
 ```text
 # Clone the repo
-$ git clone https://github.com/pranay/aqueduct.git
+$ git clone https://github.com/PRANAY8055/aqueduct.git
 
 # Build the jar
 $ ./gradlew clean build
@@ -51,4 +51,4 @@ $ cat env/local.properties
 $ ./gradlew runConsumer
 ```
 
-**Note:** Sample configuration for other sinks along with some advanced configurations can be found [here](https://github.com/pranay/aqueduct/blob/main/docs/reference/configuration.md)
+**Note:** Sample configuration for other sinks along with some advanced configurations can be found [here](https://github.com/PRANAY8055/aqueduct/blob/main/docs/reference/configuration.md)

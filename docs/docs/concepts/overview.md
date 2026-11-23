@@ -10,7 +10,7 @@ scale. This section explains the overall architecture of Aqueduct and describes 
 ## [Monitoring Aqueduct with exposed metrics](monitoring.md)
 
 Always know what’s going on with your deployment with
-built-in [monitoring](https://github.com/pranay/aqueduct/blob/main/docs/assets/aqueduct-grafana-dashboard.json) of
+built-in [monitoring](https://github.com/PRANAY8055/aqueduct/blob/main/docs/assets/aqueduct-grafana-dashboard.json) of
 throughput, response times, errors and more. This section contains guides, best practices and advises related to
 managing Aqueduct in production.
 

@@ -703,7 +703,7 @@ No, the Kafka consumer used in Aqueduct doesn't support SSL.
 
 When Aqueduct starts, it creates as many Kafka consumers as specified by the config **APPLICATION_THREAD_COUNT** (
 default set to 1). Each consumer runs on a separate thread. Please
-look [here](https://github.com/pranay/aqueduct/blob/main/docs/reference/configuration.md#kafka-consumer) for more details
+look [here](https://github.com/PRANAY8055/aqueduct/blob/main/docs/reference/configuration.md#kafka-consumer) for more details
 on how to configure the Kafka consumer.
 
 #### Can I change the consumer group name or reset it ? Overall, how do I handle my consumer group operations?
@@ -711,7 +711,7 @@ on how to configure the Kafka consumer.
 Yes, the Kafka consumer group name can be changed by specifying the following configuration **SOURCE_KAFKA_CONSUMER_GROUP_ID**. The Kafka consumer in Aqueduct can also be reset. However, the default behaviour is
 currently set to read from the latest offset. To know further details on how to tune the Kafka consumer group, you can
 have a look at the Kafka consumer configurations already exposed by
-Aqueduct [here](https://github.com/pranay/aqueduct/blob/main/docs/reference/configuration/kafka-consumer-1.md#kafka-consumer).
+Aqueduct [here](https://github.com/PRANAY8055/aqueduct/blob/main/docs/reference/configuration/kafka-consumer-1.md#kafka-consumer).
 
 #### What are the advantages of Aqueduct over Kafka connect ?
 
@@ -743,7 +743,7 @@ requires no ongoing administration.
 #### Can I do any transformations before sending data to sink, for example filtering ?
 
 Yes, Aqueduct provides JEXL based filters based on the fields in key or message of the Kafka record. Read
-the [Filters](https://github.com/pranay/aqueduct/blob/main/docs/concepts/filters.md) section for further details.
+the [Filters](https://github.com/PRANAY8055/aqueduct/blob/main/docs/concepts/filters.md) section for further details.
 
 #### How to optimise parallelism based on input rate of Kafka messages? Does it depend on sink ?
 
@@ -767,7 +767,7 @@ the `come.pranay.aqueduct.error` package.
 #### Which Kafka client configs are available ?
 
 Aqueduct provides various Kafka client configurations.
-Refer [Kafka Consumer Configurations](https://github.com/pranay/aqueduct/blob/main/docs/reference/configuration/kafka-consumer-1.md)
+Refer [Kafka Consumer Configurations](https://github.com/PRANAY8055/aqueduct/blob/main/docs/reference/configuration/kafka-consumer-1.md)
 section.
 
 #### What all data formats are supported?
@@ -833,7 +833,7 @@ the `org.pranay.aqueduct.error` package.
 #### What all metrics are produced for me to monitor ?
 
 Aqueduct exposes critical metrics to monitor the health of your delivery streams and take any necessary actions. Refer
-the [Metrics](https://github.com/pranay/aqueduct/blob/main/docs/reference/metrics.md) section for further details on each
+the [Metrics](https://github.com/PRANAY8055/aqueduct/blob/main/docs/reference/metrics.md) section for further details on each
 metric.
 
 #### What kind of delivery guarantees does Aqueduct provide? Is it different from what Kafka is tuned for?

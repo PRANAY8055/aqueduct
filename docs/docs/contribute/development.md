@@ -56,7 +56,7 @@ Aqueduct sends critical metrics via StatsD client. Refer the[ Monitoring](../con
 
 ```bash
 # Clone the repo
-$ git clone https://github.com/pranay/aqueduct.git
+$ git clone https://github.com/PRANAY8055/aqueduct.git
 
 # Build the jar
 $ ./gradlew clean build

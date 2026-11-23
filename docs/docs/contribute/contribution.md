@@ -3,8 +3,8 @@
 The following is a set of guidelines for contributing to Aqueduct. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request. Here are some important resources:
 
 - The [Concepts](../guides/create_aqueduct.md) section will explain to you about Aqueduct architecture,
-- Our [roadmap](https://github.com/pranay/aqueduct/blob/main/docs/roadmap.md) is the 10k foot view of where we're going, and
-- Github [issues](https://github.com/pranay/aqueduct/issues) track the ongoing and reported issues.
+- Our [roadmap](https://github.com/PRANAY8055/aqueduct/blob/main/docs/roadmap.md) is the 10k foot view of where we're going, and
+- Github [issues](https://github.com/PRANAY8055/aqueduct/issues) track the ongoing and reported issues.
 
 Development of Aqueduct happens in the open on GitHub, and we are grateful to the community for contributing bug fixes and improvements. Read below to learn how you can take part in improving Aqueduct.
 
@@ -23,7 +23,7 @@ The following parts are open for contribution:
 - Provide suggestions to make the user experience better
 - Provide suggestions to Improve the documentation
 
-To help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/pranay/aqueduct/labels/good%20first%20issue) that contain bugs that have a relatively limited scope. This is a great place to get started.
+To help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/PRANAY8055/aqueduct/labels/good%20first%20issue) that contain bugs that have a relatively limited scope. This is a great place to get started.
 
 ## How can I contribute?
 
@@ -53,4 +53,4 @@ Please follow these practices for your change to get merged fast and smoothly:
 - If you are introducing a completely new feature or making any major changes to an existing one, we recommend starting with an RFC and get consensus on the basic design first.
 - Make sure your local build is running with all the tests and checkstyle passing.
 - If your change is related to user-facing protocols/configurations, you need to make the corresponding change in the documentation as well.
-- Docs live in the code repo under [`docs`](https://github.com/pranay/aqueduct/tree/main/docs/docs/README.md) so that changes to that can be done in the same PR as changes to the code.
+- Docs live in the code repo under [`docs`](https://github.com/PRANAY8055/aqueduct/tree/main/docs/docs/README.md) so that changes to that can be done in the same PR as changes to the code.

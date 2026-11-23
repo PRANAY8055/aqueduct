@@ -1,7 +1,7 @@
 # Aqueduct
 
-![build workflow](https://github.com/pranay/aqueduct/actions/workflows/build.yml/badge.svg)
-![package workflow](https://github.com/pranay/aqueduct/actions/workflows/package.yml/badge.svg)
+![build workflow](https://github.com/PRANAY8055/aqueduct/actions/workflows/build.yml/badge.svg)
+![package workflow](https://github.com/PRANAY8055/aqueduct/actions/workflows/package.yml/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?logo=apache)](LICENSE)
 [![Version](https://img.shields.io/github/v/release/pranay/aqueduct?logo=semantic-release)](Version)
 
@@ -68,7 +68,7 @@ $ docker run -e SOURCE_KAFKA_BROKERS=127.0.0.1:6667 -e SOURCE_KAFKA_CONSUMER_GRO
 
 ```sh
 # Clone the repo
-$ git clone https://github.com/pranay/aqueduct.git
+$ git clone https://github.com/PRANAY8055/aqueduct.git
 
 # Build the jar
 $ ./gradlew clean build
@@ -101,11 +101,11 @@ Development of Aqueduct happens in the open on GitHub, and we are grateful to th
 
 Read our [contributing guide](docs/docs/contribute/contribution.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to Aqueduct.
 
-To help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/pranay/aqueduct/labels/good%20first%20issue) that contain bugs which have a relatively limited scope. This is a great place to get started.
+To help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/PRANAY8055/aqueduct/labels/good%20first%20issue) that contain bugs which have a relatively limited scope. This is a great place to get started.
 
 ## Credits
 
-This project exists thanks to all the [contributors](https://github.com/pranay/aqueduct/graphs/contributors).
+This project exists thanks to all the [contributors](https://github.com/PRANAY8055/aqueduct/graphs/contributors).
 
 ## License
 

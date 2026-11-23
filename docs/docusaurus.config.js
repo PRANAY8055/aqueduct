@@ -11,7 +11,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'assets/favicon.ico',
-  organizationName: 'pranay',
+  organizationName: 'PRANAY8055',
   projectName: 'aqueduct',
 
   presets: [
@@ -24,7 +24,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/pranay/aqueduct/edit/master/docs/',
+          editUrl: 'https://github.com/PRANAY8055/aqueduct/edit/master/docs/',
           sidebarCollapsed: true,
           breadcrumbs: false,
         },
@@ -64,7 +64,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             className: 'header-slack-link',
           },
           {
-            href: 'https://github.com/pranay/aqueduct',
+            href: 'https://github.com/PRANAY8055/aqueduct',
             className: 'navbar-item-github',
             position: 'right',
           },
@@ -80,7 +80,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       },
       announcementBar: {
         id: 'star-repo',
-        content: '⭐️ If you like Aqueduct, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/pranay/aqueduct">GitHub</a>! ⭐',
+        content: '⭐️ If you like Aqueduct, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/PRANAY8055/aqueduct">GitHub</a>! ⭐',
         backgroundColor: '#222',
         textColor: '#eee',
         isCloseable: true,
